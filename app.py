@@ -4,6 +4,7 @@ import plotly.graph_objects as go
 import streamlit as st
 import yfinance as yf
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
 # ------------------------------------------------------------
 # 기본 설정
@@ -137,7 +138,7 @@ def header(title: str, desc: str):
     st.title(title)
     st.info(desc)
     st.caption(NOTICE)
-    st.caption(f"마지막 업데이트: {datetime.now():%Y-%m-%d %H:%M}  (데이터는 1시간마다 갱신)")
+    st.caption(f"마지막 업데이트: {datetime.now(ZoneInfo('Asia/Seoul')):%Y-%m-%d %H:%M} KST  (데이터는 1시간마다 갱신)")
 
 
 def price_chart(s: pd.Series, title: str, ma_list=(60, 120)):
